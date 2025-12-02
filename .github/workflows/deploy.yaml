@@ -1,4 +1,4 @@
-name: Build and Deploy Website
+name: Build, Validate HTML, and Deploy to GitHub Pages
 
 on:
   push:
@@ -7,13 +7,14 @@ on:
 
 jobs:
   validate-html:
+    name: Validate HTML Files
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
@@ -25,18 +26,26 @@ jobs:
         run: npm run html-validate
 
   deploy:
-    needs: validate-html     # 👈 Solo deploy si pasa la validación
+    name: Deploy to GitHub Pages
+    needs: validate-html   # 👈 SOLO se ejecuta si la validación HTML pasa
     runs-on: ubuntu-latest
 
     permissions:
+      contents: read
       pages: write
       id-token: write
 
     steps:
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-      - name: Upload website files
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: .   # 👈 Esto sube TODO tu sitio (html, css, js, imágenes)
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
