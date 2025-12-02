@@ -1,5 +1,16 @@
-npm install --save-dev htmlhint
-"scripts": {
-  "html-validate": "htmlhint **/*.html"
+{
+  "name": "mi-sitio-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "html-validate": "htmlhint **/*.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "htmlhint": "^0.17.0"
+  }
 }
 
