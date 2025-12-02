@@ -1,2 +1,6 @@
 npm init -y
 npm install --save-dev htmlhint
+"scripts": {
+  "html-validate": "htmlhint **/*.html"
+}
+
