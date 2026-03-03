@@ -27,7 +27,7 @@ jobs:
 
   deploy:
     name: Deploy to GitHub Pages
-    needs: validate-html   # 👈 SOLO se ejecuta si la validación HTML pasa
+    needs: validate-html   #SOLO se ejecuta si la validación HTML pasa
     runs-on: ubuntu-latest
 
     permissions:
@@ -45,7 +45,7 @@ jobs:
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .   # 👈 Esto sube TODO tu sitio (html, css, js, imágenes)
+          path: .   #Esto sube TODO tu sitio (html, css, js, imágenes)
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
